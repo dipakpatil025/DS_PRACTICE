@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-double eps = 1e-6;
+float eps = 1e-6;
 double nTHroot(double n){
     double l = 1;
     double r = n;
@@ -26,6 +26,7 @@ double nTHroot(double n){
 }
 int main()
 {
+    cout<<float(eps)<<endl;
     double n;
     cin>>n;
     double ans = nTHroot(n);
