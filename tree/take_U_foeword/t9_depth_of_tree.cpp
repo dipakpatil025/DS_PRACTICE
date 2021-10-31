@@ -13,14 +13,14 @@ public:
         right = NULL;
     }
 };
-
-int depthOfTree(node* root){
+int depthOfTree(node *root)
+{
     if (root == NULL)
     {
         return 0;
     }
-    int ans = 1 + max(depthOfTree(root->left),depthOfTree(root->right));
-    return ans;
+
+    return 1 + max(depthOfTree(root->left), depthOfTree(root->right));
 }
 
 int main()
@@ -35,7 +35,7 @@ int main()
     root->left->right->left = new node(5);
     root->left->right->right = new node(6);
 
-     cout<<depthOfTree(root);
+    cout << depthOfTree(root);
     // it_postOrder(root);
     // it_Inorder(root);
     // level_traversal(root);

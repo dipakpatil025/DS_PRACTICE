@@ -26,11 +26,11 @@ void inorder(node *root)
     inorder(root->left);
 }
 
-void level_traversal(node *root)
+bool level_traversal(node *root)
 {
     if (root == NULL)
     {
-        return;
+        return true;
     }
     queue<node *> q;
     q.push(root);
@@ -45,27 +45,37 @@ void level_traversal(node *root)
             q.pop();
             if (nw->left)
             {
+                if (!(nw->data > nw->left->data))
+                {
+                    return false;
+                    /* code */
+                }
+
                 q.push(nw->left);
             }
             if (nw->right)
             {
+                if (!(nw->data < nw->right->data))
+                {
+                    /* code */
+                    return false;
+                }
+
                 q.push(nw->right);
             }
-            cout << nw->data  << " ";
+           c++;
         }
-        cout<<endl;
-        c++;
     }
-    cout<<c<<endl;
+    return true;
 }
 int main()
 {
     node *root = new node(100);
-    root->left = new node(2);
-    root->right = new node(3);
+    root->left = new node(50);
+    root->right = new node(300);
     root->left->left = new node(4);
-    root->left->right = new node(5);
+    root->left->right = new node(55);
 
-    level_traversal(root);
+    cout << level_traversal(root);
     return 0;
 }
