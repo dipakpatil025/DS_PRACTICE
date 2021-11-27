@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 void display(vector<vector<bool>> m)
 {
     for (int i = 0; i < m.size(); i++)
@@ -20,7 +21,6 @@ void display(vector<vector<bool>> m)
 }
 bool isSafe(vector<vector<bool>> mat, int r, int c)
 {
-    // check vertical row
     for (int i = 0; i < r; i++)
     {
         if (mat[i][c])
@@ -28,20 +28,15 @@ bool isSafe(vector<vector<bool>> mat, int r, int c)
             return false;
         }
     }
-    // diagonal left
-    int mxLeft = min(r, c);
-    for (int i = 1; i <= mxLeft; i++)
+    for (int i = 1; i <= min(r, c); i++)
     {
         if (mat[r - i][c - i])
         {
             return false;
         }
     }
-
-    // diagonal Right
     int sn = mat.size();
-    int mxRight = min(r, (sn - c - 1));
-    for (int i = 1; i <= mxRight; i++)
+    for (int i = 1; i <= min(r, (sn - c - 1)); i++)
     {
         if (mat[r - i][c + i])
         {
@@ -50,35 +45,30 @@ bool isSafe(vector<vector<bool>> mat, int r, int c)
     }
     return true;
 }
-int print_posible_ways(vector<vector<bool>> mat, int r)
+int print_ans(vector<vector<bool>> mat, int r)
 {
-    if (r == mat.size() )
+    if (r == mat.size())
     {
         display(mat);
         cout << endl;
         return 1;
     }
-    int coutn = 0;
-
-    // placing the queen and cheking for ewvry row and colum
-    for (int c = 0; c < mat.size(); c++)
+    int cn = 0;
+    for (int i = 0; i < mat.size(); i++)
     {
-        // place the queue if it is safe
-        if (isSafe(mat, r, c))
+        if (isSafe(mat, r, i))
         {
-            mat[r][c] = true;
-            coutn += print_posible_ways(mat, r + 1);
-            mat[r][c] = false;
+            mat[r][i] = true;
+            cn += print_ans(mat, r + 1);
+            mat[r][i] = false;
         }
     }
-    return coutn;
+    return cn;
 }
 int main()
 {
     int n = 4;
-    std::vector<std::vector<bool>> mat(n, std::vector<bool>(n, false));
-
-    cout << print_posible_ways(mat, 0) << endl;
-    // cout<<isSafe(mat, 3, 3);
+    vector<vector<bool>> vv(n, vector<bool>(n, false));
+    cout << print_ans(vv, 0);
     return 0;
 }

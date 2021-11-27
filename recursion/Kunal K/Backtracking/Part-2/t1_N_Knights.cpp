@@ -111,7 +111,11 @@ void print_posible_ways(vector<vector<bool>> v, int r, int c, int cnt)
         print_posible_ways(v, r, c + 1, cnt - 1);
         v[r][c] = false;
     }
-    print_posible_ways(v, r, c + 1, cnt);
+    else
+    {
+
+        print_posible_ways(v, r, c + 1, cnt);
+    }
 }
 int main()
 {
