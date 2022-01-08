@@ -52,7 +52,7 @@ int main()
     int n, r;
     cin >> n >> r;
     vector<char> v(n, '-');
-    // print_combination(v, 0);
-    pcwf(v, r,0);
+    print_combination(v, 0);
+    // pcwf(v, r, 0);
     return 0;
 }

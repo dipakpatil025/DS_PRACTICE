@@ -1,19 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-int print_path(int r, int c)
+#define ll long long int
+#define pi (3.141592653589)
+#define dd double
+#define ff first
+#define Y "YES"
+#define N "NO"
+#define fl(a, c) for (int(a) = 0; (a) < (c); (a)++)
+long int gcd(long a, long b)
 {
-    if (r == 1 || c == 1)
+    return (b == 0) ? a : gcd(b, a % b);
+}
+
+void solve()
+{
+    ll n;
+    cin >> n;
+    vector<int> v(n);
+    int sm = 0;
+    for (int i = 0; i < n; i++)
     {
-        return 1;
+        cin >> v[i];
+        sm += v[i];
     }
-    int left = print_path(r - 1, c);
-
-    int right = print_path(r, c - 1);
-
-    return left + right;
+    if(sm%n == 0){
+        cout<<0<<endl;
+    }
+    else{
+        cout<<1<<endl;
+    }
 }
 int main()
 {
-    cout << print_path(2, 2);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
     return 0;
 }
