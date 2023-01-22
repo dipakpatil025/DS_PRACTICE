@@ -1,5 +1,4 @@
-.cph
-.vscode
+*.vscode
 *.exe
 *.bin
 *.cph
